@@ -10,7 +10,8 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_weight="0.10"
+        android:textSize="24sp"
         tools:layout_height="wrap_content" />
 </LinearLayout>

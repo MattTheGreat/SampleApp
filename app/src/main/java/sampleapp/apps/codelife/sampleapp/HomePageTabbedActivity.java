@@ -228,19 +228,19 @@ public class HomePageTabbedActivity extends AppCompatActivity implements CameraF
             // Return a PlaceholderFragment (defined as a static inner class below).
             //Fragment.instantiate(CameraFragment.newInstance("",""));//,R.layout.fragment_camera);
             //return PlaceholderFragment.newInstance(position + 1);
+            Fragment frag = null;
 
-
-                Fragment frag = null;
-
-                frag = new CameraFragment();
-                try {
+            switch (position){
+                case 0:
+                    return PlaceholderFragment.newInstance(position + 1);
+                case 1:
+                    //frag = new CameraFragment();
                     return new CameraFragment();
-                }
-                catch (Exception exc){
-                    throw exc;
-                }
-                //return new CameraFragment();
-        }
+            }
+
+            return PlaceholderFragment.newInstance(position + 1);
+        }     //return new CameraFragment();
+
 
         @Override
         public int getCount() {

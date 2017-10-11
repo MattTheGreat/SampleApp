@@ -11,8 +11,7 @@
         android:id="@+id/fragmentCameraListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="?attr/colorControlHighlight"
-        android:dividerHeight="@dimen/appbar_padding_top"
+        android:clipChildren="false"
         android:scrollbars="horizontal"
         android:visibility="visible" />
 </FrameLayout>
