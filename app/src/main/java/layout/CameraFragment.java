@@ -102,7 +102,6 @@ public class CameraFragment extends Fragment {
             mpicturelist = view.findViewById(R.id.fragmentCameraListView);
 
             populateListView(view);
-
             return view;
         }
         catch (Exception exc){
@@ -120,21 +119,30 @@ public class CameraFragment extends Fragment {
         List<String> imagenames = new ArrayList<>();
         File[] savedImages = dir.listFiles();
 
-        for (File image : savedImages) {
-            imagenames.add(image.getName().toString());
+
+
+        if(savedImages.length > 0){
+
+            for (File image : savedImages) {
+                imagenames.add(image.getName().toString());
+            }
+
+            String[] imagearrayname = new String[imagenames.size()];
+            imagearrayname = imagenames.toArray(imagearrayname);
+
+            ArrayAdapter<String> image_adapter = new ArrayAdapter<String>(
+                    view.getContext(),
+                    R.layout.image_listitem,
+                    R.id.textView,
+                    imagearrayname
+            );
+
+            mpicturelist.setAdapter(image_adapter);
+        }
+        else {
+            return;
         }
 
-        String[] imagearrayname = new String[imagenames.size()];
-        imagearrayname = imagenames.toArray(imagearrayname);
-
-        ArrayAdapter<String> image_adapter = new ArrayAdapter<String>(
-                view.getContext(),
-                R.layout.image_listitem,
-                R.id.textView,
-                imagearrayname
-        );
-
-        mpicturelist.setAdapter(image_adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

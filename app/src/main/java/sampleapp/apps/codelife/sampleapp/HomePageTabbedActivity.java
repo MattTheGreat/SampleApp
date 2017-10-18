@@ -122,6 +122,9 @@ public class HomePageTabbedActivity extends AppCompatActivity implements CameraF
                 }
             }
         }
+        finish();
+        startActivity(new Intent(this, HomePageTabbedActivity.class));
+
     }
 
 

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Boolean isValid = ValidateAndAuthenticateUser(_memailAddress,_mpassword);
             if(isValid){
                 try {
-
+                    finish();
                     startActivity(new Intent(this, HomePageTabbedActivity.class));
                 }
                 catch (Exception exc){
