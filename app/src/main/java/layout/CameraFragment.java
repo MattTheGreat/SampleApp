@@ -3,6 +3,8 @@ package layout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
@@ -16,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -100,8 +103,16 @@ public class CameraFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
         try {
             mpicturelist = view.findViewById(R.id.fragmentCameraListView);
+            PopulateListView(view);
 
-            populateListView(view);
+/*
+            mpicturelist.setOnClickListener(new  AdapterView.OnItemClickListener(){
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+
+                }
+            });
+*/
             return view;
         }
         catch (Exception exc){
@@ -112,29 +123,31 @@ public class CameraFragment extends Fragment {
 
     }
 
-    private void populateListView(View view) {
+    private void PopulateListView(View view) {
 
         File path= Environment.getExternalStorageDirectory();//(Environment.DIRECTORY_DCIM);  //cw.getDir("imageDir", Context.MODE_PRIVATE);
         File dir= new File(path, "/save/");
-        List<String> imagenames = new ArrayList<>();
+        List<String> image_names = new ArrayList<>();
         File[] savedImages = dir.listFiles();
-
 
 
         if(savedImages.length > 0){
 
             for (File image : savedImages) {
-                imagenames.add(image.getName().toString());
+                image_names.add(image.getName().toString());
             }
 
-            String[] imagearrayname = new String[imagenames.size()];
-            imagearrayname = imagenames.toArray(imagearrayname);
+
+
+            String[] image_array_name = new String[image_names.size()];
+            image_array_name = image_names.toArray(image_array_name);
+
 
             ArrayAdapter<String> image_adapter = new ArrayAdapter<String>(
                     view.getContext(),
                     R.layout.image_listitem,
-                    R.id.textView,
-                    imagearrayname
+                    R.id.listitemtextview,
+                    image_array_name
             );
 
             mpicturelist.setAdapter(image_adapter);

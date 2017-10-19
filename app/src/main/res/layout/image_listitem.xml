@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/listiview"
     android:layout_width="match_parent"
@@ -8,10 +9,11 @@
     android:weightSum="1">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/listitemtextview"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_weight="0.10"
+        android:drawableRight="@mipmap/ic_shoe"
         android:textSize="24sp"
         tools:layout_height="wrap_content" />
 </LinearLayout>
